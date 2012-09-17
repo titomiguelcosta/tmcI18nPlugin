@@ -1,0 +1,44 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           tmcTransUnit
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          tmc_trans_unit
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        catalogue:
+          label: Catálogo
+        cat_id:
+          label: Catálogo
+        source:
+          label: Original
+        target:
+          label: Tradução
+        comments:
+          label: Comentários
+        date_created:
+          label: Data de criação
+        date_modified:
+          label: Data de atualização
+        translated:
+          label: Traduzido
+      list:
+        title: A listar as traduções
+        display: [catalogue, source, translated]
+      filter:  ~
+      form:    ~
+      edit:
+        title: A editar tradução
+      new:
+        title: A criar nova tradução
+      show:
+        title: A mostrar tradução
+      revert:  ~

@@ -1,0 +1,72 @@
+#table names are predefined by the i18n mysql class
+tmcCatalogue:
+  tableName:          catalogue
+  actAs:
+    Timestampable:
+      created:
+        name:         date_created
+        type:         timestamp
+        format:       Y-m-d H:i:s
+      updated:
+        name:         date_modified
+        type:         timestamp
+        format:       Y-m-d H:i:s
+  columns:
+    cat_id:
+      type:           integer
+      notnull:        true
+      primary:        true
+      autoincrement:  true
+    name:
+      type:           string(100)
+      notnull:        true
+    date_created:
+      type:           timestamp
+    date_modified:
+      type:           timestamp
+    author:
+      type:           string(255)
+tmcTransUnit:
+  tableName:          trans_unit
+  actAs:
+    Timestampable:
+      created:
+        name:         date_created
+        type:         timestamp
+        format:       Y-m-d H:i:s
+      updated:
+        name:         date_modified
+        type:         timestamp
+        format:       Y-m-d H:i:s
+  columns:
+    id:
+      type:           integer
+      notnull:        true
+      primary:        true
+      autoincrement:  true
+    cat_id:
+      type:           integer
+      notnull:        true
+    source:
+      type:           clob
+      notnull:        true
+    target:
+      type:           clob
+      notnull:        true
+    comments:
+      type:           clob
+    date_created:
+      type:           timestamp
+    date_modified:
+      type:           timestamp
+    translated:
+      type:           boolean
+      default:        true
+  relations:
+    tmcCatalogue:
+      class:          tmcCatalogue
+      local:          cat_id
+      foreign:        cat_id
+      foreignAlias:   TransUnits
+      alias:          Catalogue
+      onDelete:       cascade

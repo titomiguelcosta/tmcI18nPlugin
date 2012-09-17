@@ -1,0 +1,38 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           tmcCatalogue
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          tmc_catalogue
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        cat_id:
+          label: Catálogo
+        name:
+          label: Nome
+        date_created:
+          label: Data de criação
+        date_modified:
+          label: Data de atualização
+        author:
+           label: Autor
+      list:
+        title: A listar os catálogos
+        display: [cat_id, name, date_created, date_modified]
+      filter:  ~
+      form:    ~
+      edit:
+        title: A editar catálogo
+      new:
+        title: A criar novo catálogo
+      show:
+        title: A mostrar catálogo
+      revert:  ~
