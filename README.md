@@ -1,12 +1,14 @@
 #tmcI18nPlugin#
 
-MySQL support for internationalization instead of XLIFF files.
+symfony 1.4[1] plugin that adds MySQL support for internationalization instead of XLIFF files
 
 ## Installation ##
 
   * Install the plugin
 
-        symfony plugin:install tmcI18nPlugin
+        symfony plugin:install tmcI18nPlugin (deprecated)
+    or
+        git clone https://github.com/titomiguelcosta/tmcI18nPlugin.git plugins (recommended)
 
   * Activate the plugin in the `config/ProjectConfiguration.class.php` in case it isn't already active
 
@@ -23,15 +25,14 @@ MySQL support for internationalization instead of XLIFF files.
           }
         }
 
-  * Rebuild your model
+  * Rebuild your model (in case you do not use migrations)
 
         symfony doctrine:build-model
         symfony doctrine:build-forms
         symfony doctrine:build-filters
         symfony doctrine:build-sql
 
-  * Update you database tables by starting from scratch (it will delete all
-    the existing tables, then re-create them):
+  * Update you database tables by starting from scratch (it will delete all the existing tables, then re-creates them):
 
         symfony doctrine:insert-sql
 
@@ -41,7 +42,7 @@ MySQL support for internationalization instead of XLIFF files.
 
   * Enable the modules in your `settings.yml` (optional)
     * For your backend application: transunit and transunit
-    * *Note:* this modules make use of the plugin tmcTwitterBootstrapPlugin, if you do not want to install, feel free to generate new modules with the task doctrine:generate-admin
+    * *Note:* these modules make use of the plugin tmcTwitterBootstrapPlugin, if you do not want to install, feel free to generate new modules with the task doctrine:generate-admin
 
               all:
                 .settings:
@@ -74,13 +75,13 @@ There is a task to extract the i18n strings. The task extends the native i18n:ex
 
 ## Alert ##
 
-- when creating on the administration area, the catalogue name must specify the culture, for instance: messages.pt
+- when adding a new catalgoue, name must specify the culture, for instance: messages.pt
 
 - in case css files are not loaded, publish assets runnig the task $php symfony plugin:publish-assets
 
 - don't forget to edit the dsn configuration for the database connection in the factories.yml
 
-- don't forget to enable i18n in the setting.yml file of your config application folder
+- don't forget to enable i18n in the settings.yml file of your config application folder
               all:
                 .settings:
                   i18n: true
